@@ -1,16 +1,7 @@
-class HeaderSection extends HTMLElement {
-    connectedCallback() {
-        // $('.nav-logo').each(function() {
-        //     var link = $(this).html();
-        //     $(this).contents().wrap('<a href="./index.html"></a>');
-        // });
-        this.innerHTML = `
-<style>
-
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-.header {
+#header {
     display: flex;
     justify-content: space-between;
     transition: all 0.5s;
@@ -18,36 +9,32 @@ class HeaderSection extends HTMLElement {
     padding: 14px 0 20px 0;
 }
 
-.header .container .menu {
+#header .container .menu {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.header.header-scrolled {
+#header.header-scrolled {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     background-color: rgba(141, 133, 133, 0.67);;
     padding: 14px 0 20px 0;
     height: 110px;
 }
 
-.header.header-inner-pages {
+#header.header-inner-pages {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-.header .logo a {
+#header .logo a {
     color: #556270;
 }
 
-.header img {
+#header img {
     width: 80px;
     margin-bottom: 20px;
 }
 
-/*.nav-logo img{*/
-/*    content:url(../img/img.png);*/
-/*    }*/
-    
 @media (max-width: 1000px) {
     #header {
         padding: 8px 0;
@@ -143,7 +130,7 @@ class HeaderSection extends HTMLElement {
 }
 
 .nav-menu .drop-down > a:after {
-    content: "\\ea99";
+    content: "\ea99";
     font-family: 'Jost', sans-serif;
     padding-left: 5px;
 }
@@ -164,7 +151,7 @@ class HeaderSection extends HTMLElement {
 }
 
 .nav-menu .drop-down .drop-down > a:after {
-    content: "\\eaa0";
+    content: "\eaa0";
     font-family: 'Jost', sans-serif;
     position: absolute;
     right: 15px;
@@ -180,7 +167,7 @@ class HeaderSection extends HTMLElement {
     }
 
     .nav-menu .drop-down .drop-down > a:after {
-        content: "\\ea9d";
+        content: "\ea9d";
     }
 }
 
@@ -248,7 +235,7 @@ class HeaderSection extends HTMLElement {
 }
 
 .mobile-nav .drop-down > a:after {
-    content: "\\ea99";
+    content: "\ea99";
     font-family: 'Akshar', sans-serif;
     padding-left: 10px;
     position: absolute;
@@ -256,7 +243,7 @@ class HeaderSection extends HTMLElement {
 }
 
 .mobile-nav .active.drop-down > a:after {
-    content: "\\eaa1";
+    content: "\eaa1";
 }
 
 .mobile-nav .drop-down > a {
@@ -297,26 +284,3 @@ class HeaderSection extends HTMLElement {
 .mobile-nav-active .mobile-nav-toggle i {
     color: #fff;
 }
-
-</style>
-
-  <header id="header" class="fixed-top header">
-    <div class="container d-flex ">
-      <div class="menu">
-        <nav class="nav-menu d-none d-lg-block">
-          <ul>
-            <li><a href="./assets/pages/about-us.html">Sobre nosotros</a></li>
-            <li><a href="#">Colegios</a></li>
-            <li class="nav-logo"><a href="./assets/../../index.html"><img class="img-logo" src="./assets/img/img.png" alt=""></a></li>
-            <li><a href="">Noticias</a></li>
-            <li style="padding-right: 62px"><a href="../../index.html#contact">Contacto</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
-`
-    }
-}
-
-window.customElements.define('header-section', HeaderSection)
