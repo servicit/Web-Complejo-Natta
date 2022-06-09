@@ -5,25 +5,176 @@
 !(function ($) {
     "use strict";
 
-    // $('#headerDiv').load('./assets/html/header.html');
-    // $('#noticeDiv').load('./assets/html/notices.html');
+    // Toggle .header-scrolled class to #header when page is scrolled
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('#header').addClass('header-scrolled');
+        } else {
+            $('#header').removeClass('header-scrolled');
+        }
+    });
 
+    if ($(window).scrollTop() > 100) {
+        $('#header').addClass('header-scrolled');
+    }
 
-    // class HeaderComponent extends HTMLElement {
-    //     connectedCallback() {
-    //         this.innerHTML = "<h1 style='background-color: #1d2124'>hello world!</h1>"
-    //     }
-    // }
-    //
-    // class PlaceholderKitten extends HTMLElement {
-    //     connectedCallback() {
-    //         this.innerHTML = "<img src='https://placekitten.com/200/300' />"
-    //     }
-    // }
-    //
-    // window.customElements.define('placeholder-kitten', PlaceholderKitten)
+    //Contentful connect limit 3 items
+    var client = contentful.createClient({
+        space: 'rrf8x8ztwkew',
+        accessToken: 'URf70KaEdgfgrSf4t6pYgudwg0Gmw-H_wuDIgJexO8A',
+    });
+    client.getEntries({
+        limit: 3,
+        content_type: 'post',
+    }).then(function (entries) {
+        entries.items.forEach(function (entry) {
+            $('#last-news').append(`
+          <div class="col-lg-4 col-md-10" >
+           <a href="notice.html">
+            <article class="entry">
+              <div class="entry-img">
+                <img src="http:${entry.fields.image.fields.file.url}" class="img-fluid" alt="">
+              </div>
+              <h2 class="entry-title">
+                ${entry.fields.title}
+              </h2>
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="icofont-user"></i>
+                    User
+                  </li>
+                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i>
+                    <time datetime="2020-01-01">
+                      20/05/2022
+                    </time>
+                  </li>
+                </ul>
+              </div>
+              <div class="entry-content">
+                <p>
+                  ${entry.fields.description}
+                </p>
+              </div>
+            </article>
+          </a>
+         </div>`)
+        });
+    })
 
-    // window.customElements.define('header-component', HeaderComponent)
+    let state = {
+        page: 1,
+        limit: 2,
+        window: 3,
+    }
+
+    const loadNews = () => {
+        client.getEntries({
+            content_type: 'post',
+        }).then(function (entries) {
+            const limit = state.limit;
+            const totalNews = entries.total;
+            const pagesQuantity = Math.ceil(totalNews / limit);
+
+            pageButtons(pagesQuantity)
+
+            client.getEntries({
+                content_type: 'post',
+                limit: limit,
+                skip: (state.page - 1) * limit,
+            }).then(function (entries) {
+                document.getElementById('news').innerHTML = ''
+                entries.items.forEach(function (entry) {
+                    $('#news').append(`
+          <div class="col-lg-4 col-md-10" >
+           <a href="notice.html">
+            <article class="entry">
+              <div class="entry-img">
+                <img src="http:${entry.fields.image.fields.file.url}" class="img-fluid" alt="">
+              </div>
+              <h2 class="entry-title">
+                ${entry.fields.title}
+              </h2>
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="icofont-user"></i>
+                    User
+                  </li>
+                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i>
+                    <time datetime="2020-01-01">
+                      20/05/2022
+                    </time>
+                  </li>
+                </ul>
+              </div>
+              <div class="entry-content">
+                <p>
+                  ${entry.fields.description}
+                </p>
+              </div>
+            </article>
+          </a>
+         </div>`)
+                });
+            })
+        })
+    }
+
+    loadNews()
+
+    document.getElementById("down-pages").addEventListener("click", () => {
+        (--state.page)
+        loadNews()
+    });
+
+    document.getElementById("up-pages").addEventListener("click", () => {
+        (++state.page)
+        loadNews()
+    });
+
+    //Page buttons
+    function pageButtons(pagesQuantity) {
+        const generateButtons = document.getElementById('generate-buttons-pagination')
+        generateButtons.innerHTML = ''
+
+        let maxLeft = state.page - Math.floor(state.window / 2);
+        let maxRight = state.page + Math.floor(state.window / 2);
+
+        if (maxLeft < 1) {
+            maxLeft = 1;
+            maxRight = state.window
+        }
+
+        if (maxRight > pagesQuantity) {
+            maxLeft = pagesQuantity - (state.window - 1)
+            maxRight = pagesQuantity
+
+            if (maxLeft < 1) {
+                maxLeft = 1
+            }
+        }
+
+        for (let pageI = maxLeft; pageI <= maxRight; pageI++) {
+            generateButtons.innerHTML += `<button value="${pageI}" class="page page-link" >${pageI}</button>`
+        }
+
+        if (state.page === 1) {
+            $('#previous').addClass('disabled')
+        }
+        if (state.page !== 1) {
+            $('#previous').removeClass('disabled')
+        }
+        if (state.page === pagesQuantity) {
+            $('#next').addClass('disabled')
+        }
+        if (state.page !== pagesQuantity) {
+            $('#next').removeClass('disabled')
+        }
+
+        $('.page').on('click', function () {
+            state.page = Number($(this).val())
+            loadNews()
+        })
+    }
 
     // Smooth scroll for the navigation menu and links with .scrollto classes
     var scrolltoOffset = $('#header').outerHeight() - 17;
@@ -104,19 +255,6 @@
         });
     } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
         $(".mobile-nav, .mobile-nav-toggle").hide();
-    }
-
-    // Toggle .header-scrolled class to #header when page is scrolled
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('#header').addClass('header-scrolled');
-        } else {
-            $('#header').removeClass('header-scrolled');
-        }
-    });
-
-    if ($(window).scrollTop() > 100) {
-        $('#header').addClass('header-scrolled');
     }
 
     // Intro carousel
@@ -206,6 +344,7 @@
 
     $(window).on('load', function () {
         aos_init();
-    });
+    })
+
 
 })(jQuery);

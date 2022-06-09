@@ -1,22 +1,13 @@
 class NoticesSection extends HTMLElement {
+    constructor() {
+        super();
+        this.title;
+        this.description;
+    }
     connectedCallback() {
         this.innerHTML = `
 <style>
-/*--------------------------------------------------------------
-# Notices-section
---------------------------------------------------------------*/
-.notice {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.general-blog {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
+ 
 .notice .entry {
     padding: 10px;
     margin-bottom: 60px;
@@ -94,10 +85,8 @@ class NoticesSection extends HTMLElement {
 
     .notice .entry li {
         font-size: 15px;
-
     }
 }
-
 
 @media (max-width: 600px) {
     .notice .entry .entry-title {
@@ -125,14 +114,14 @@ class NoticesSection extends HTMLElement {
 }
 </style>
 <section>
-  <div class="container col-lg-12 col-xl-10 ">
+  <div class="container col-lg-12 col-xl-12 col-xs-12 ">
     <div class="section-title" data-aos="fade-up">
-      <h2>Ultimas noticias</h2>
+      <h2>noticias</h2>
     </div>
-    <div class=" general-blog">
-      <div class="notice col-lg-11 d-flex justify-content-center">
+    <div class=" general-blog col-12  d-flex justify-content-center">
+      <div class="notice col-lg-10 d-flex justify-content-center">
       
-        <div class="col-lg-4 col-md-10 " data-aos="fade-up">
+        <div class=" col-12 col-lg-4 col-md-10 " data-aos="fade-up">
           <article class="entry">
 
             <div class="entry-img">

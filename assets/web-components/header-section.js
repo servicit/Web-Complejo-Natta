@@ -1,9 +1,5 @@
 class HeaderSection extends HTMLElement {
     connectedCallback() {
-        // $('.nav-logo').each(function() {
-        //     var link = $(this).html();
-        //     $(this).contents().wrap('<a href="./index.html"></a>');
-        // });
         this.innerHTML = `
 <style>
 
@@ -29,6 +25,7 @@ class HeaderSection extends HTMLElement {
     background-color: rgba(141, 133, 133, 0.67);;
     padding: 14px 0 20px 0;
     height: 110px;
+    z-index: 99;
 }
 
 .header.header-inner-pages {
@@ -43,10 +40,6 @@ class HeaderSection extends HTMLElement {
     width: 80px;
     margin-bottom: 20px;
 }
-
-/*.nav-logo img{*/
-/*    content:url(../img/img.png);*/
-/*    }*/
     
 @media (max-width: 1000px) {
     #header {
@@ -305,11 +298,11 @@ class HeaderSection extends HTMLElement {
       <div class="menu">
         <nav class="nav-menu d-none d-lg-block">
           <ul>
-            <li><a href="./assets/pages/about-us.html">Sobre nosotros</a></li>
-            <li><a href="#">Colegios</a></li>
-            <li class="nav-logo"><a href="./assets/../../index.html"><img class="img-logo" src="./assets/img/img.png" alt=""></a></li>
-            <li><a href="">Noticias</a></li>
-            <li style="padding-right: 62px"><a href="../../index.html#contact">Contacto</a></li>
+            <li><a href="./about-us.html">Sobre nosotros</a></li>
+            <li><a href="./schools.html">Colegios</a></li>
+            <li class="nav-logo"><a href="./index.html"><img class="img-logo" src="./assets/img/logo/logo.png" alt=""></a></li>
+            <li><a href="./news.html">Noticias</a></li>
+            <li style="padding-right: 62px"><a href="./index.html#contact">Contacto</a></li>
           </ul>
         </nav>
       </div>

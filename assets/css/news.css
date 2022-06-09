@@ -1,0 +1,299 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+:root {
+    --buttons-color: rgba(0, 19, 224, 0.67);
+    --font-size-991px: 30px;
+    --font-size-768px: 28px;
+    --font-size-550px: 25px;
+    --font-size-400px: 20px;
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+
+@font-face {
+    font-family: LeBeauneNew;
+    src: url("../fonts/LeBeauneNew.otf") format("opentype");
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 0;
+    color: #151515;
+    font-family: "LeBeauneNew", serif;
+    /*text-decoration: rgba(215, 17, 47, 0.89) underline;*/
+}
+
+@media (max-width: 1400px) {
+    section {
+        padding: 20px 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .section-title h2 {
+        font-size: var(--font-size-991px);
+    }
+
+    section {
+        padding: 20px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title h2 {
+        font-size: var(--font-size-768px);
+        margin-bottom: 20px;
+    }
+
+    section {
+        padding: 20px 0;
+    }
+}
+
+@media (max-width: 550px) {
+    .section-title h2 {
+        font-size: var(--font-size-550px);
+        margin-bottom: 0;
+    }
+
+    .section-title {
+        padding: 20px;
+    }
+
+    section {
+        padding: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .section-title h2 {
+        font-size: var(--font-size-400px);
+        margin: 10px 0;
+        padding: 0;
+    }
+
+    .section-title {
+        padding: 0;
+    }
+
+    section {
+        padding: 0;
+    }
+}
+
+/*--------------------------------------------------------------
+# Notices-Hero
+--------------------------------------------------------------*/
+.notices-hero {
+    height: 50vh;
+    width: 100%;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.background-image {
+    background-image: url("../img/notice-hero.jpg");
+    height: 100%;
+    background-repeat: no-repeat !important;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.bottom-gradient {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 413px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+}
+
+.top-gradient {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    top: 0;
+    left: 0;
+    height: 413px;
+    background: -moz-linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+
+.content-hero {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-end;
+}
+
+.content-title-hero {
+    z-index: 1;
+    margin-bottom: 50px;
+    margin-left: 30px;
+    padding: 0;
+}
+
+.content-title-hero h1 {
+    font-size: 40px;
+    font-family: "LeBeauneNew", serif;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #ffffff;
+    z-index: 1;
+    line-height: 1.2;
+}
+
+/*--------------------------------------------------------------
+# Notices
+--------------------------------------------------------------*/
+.notice {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.general-blog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.general-blog .notice a {
+    color: black;
+    text-decoration: none;
+}
+
+.entry {
+    height: 530px;
+    padding: 10px;
+    margin-bottom: 60px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.entry .entry-img img {
+    min-height: 255px;
+}
+
+.entry .entry-img {
+    max-height: 255px;
+    margin: 0;
+    overflow: hidden;
+}
+
+.general-blog .notice a :hover img {
+    transform: scale(1.1);
+    -webkit-transition: .5s transform ease;
+}
+
+.entry .entry-title {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: bold;
+    padding: 0;
+    margin: 20px 0 20px 0;
+}
+
+.entry .entry-title {
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.entry .entry-title a:hover {
+    color: var(--buttons-color);
+    text-decoration: none;
+}
+
+.entry .entry-content p {
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.entry .entry-meta {
+    margin-bottom: 15px;
+    color: #0880e8;
+}
+
+.entry .entry-meta ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.entry .entry-meta ul li + li {
+    padding-left: 20px;
+}
+
+.entry .entry-meta i {
+    font-size: 14px;
+    padding-right: 4px;
+}
+
+.entry .entry-content p {
+    line-height: 24px;
+    font-size: 16px;
+}
+
+.entry .entry-content h3 {
+    font-size: 22px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+@media (max-width: 991px) {
+    .notice {
+        display: flex;
+        justify-content: center;
+    }
+
+    .entry .entry-title {
+        font-size: 20px;
+    }
+
+    .entry .entry-meta {
+        align-content: center;
+        text-align: center;
+    }
+}
+
+/*--------------------------------------------------------------
+# Blog-pagination
+--------------------------------------------------------------*/
+.blog-pagination {
+    color: #878787;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.generate-buttons {
+    display: flex;
+    justify-content: space-around
+}
+
+#button:visited{
+    background-color:lime;
+    color: lime;
+}

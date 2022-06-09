@@ -1,19 +1,32 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+:root {
+    --buttons-color: rgba(0, 19, 224, 0.67);
+    --font-size-991px: 30px;
+    --font-size-768px: 28px;
+    --font-size-550px: 25px;
+    --font-size-400px: 20px;
+}
 
 @font-face {
     font-family: LeBeauneNew;
     src: url("../fonts/LeBeauneNew.otf") format("opentype");
 }
 
-.about-us {
-    height: 80vh;
+/*--------------------------------------------------------------
+# About-Us-Hero
+--------------------------------------------------------------*/
+.about-us-hero {
+    height: 75vh;
     width: 100%;
-
     position: relative;
 }
 
-.content-image {
+.background-image {
     height: 100%;
-    background-image: url("../img/about-us.jpg");
+    background-image: url("../img/about-us/about-us.jpg");
     background-repeat: no-repeat !important;
     background-position: center;
     background-size: cover;
@@ -40,7 +53,7 @@
     background: -moz-linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 }
 
-.content {
+.content-hero {
     height: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -48,12 +61,13 @@
     align-content: flex-end;
 }
 
-.content-title{
+.content-title-hero {
     z-index: 1;
     margin-bottom: 50px;
+    padding: 0;
 }
 
-.content-title h1 {
+.content-title-hero h1 {
     font-size: 40px;
     font-family: "LeBeauneNew", serif;
     font-weight: 700;
@@ -62,4 +76,124 @@
     color: #ffffff;
     z-index: 1;
     line-height: 1.2
+}
+
+/*--------------------------------------------------------------
+# About-Us-introduction
+--------------------------------------------------------------*/
+
+.about-us-introduction {
+    padding: 50px 0 50px 0;
+}
+
+.content-sub-title {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+}
+
+.content-sub-title p {
+    font-size: 25px;
+    font-family: "LeBeauneNew", serif;
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.content-logo {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.content-logo img {
+    width: 120px;
+}
+
+.content-info p {
+    font-size: 16px;
+    font-family: "Jost", sans-serif;
+    line-height: 1.7;
+    color: #6b6b6b;
+    margin: 0;
+}
+
+/*--------------------------------------------------------------
+# About-Us-Cort
+--------------------------------------------------------------*/
+
+.about-us-cort {
+    background: url("../img/about-us/background-about-us.jpg");
+    background-size: cover;
+    background-position: center center;
+    height: 423px;
+    transform: translate(0px, -2.85px);
+    margin-bottom: 50px;
+}
+
+.general-entry-about-us {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    position: absolute;
+}
+
+.general-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin-left: 25px;
+}
+
+.entry-about-us {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.content-icon-about-us {
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.icon-1-about-us {
+    height: 40px;
+    width: 43px;
+}
+
+.icon-2-about-us {
+    height: 47px;
+    width: 47px;
+}
+
+.icon-3-about-us {
+    height: 43px;
+    width: 45px;
+}
+
+.entry-about-us h4 {
+    font-family: "LeBeauneNew", serif;
+    font-size: 18px;
+    color: #3db166;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.entry-about-us p {
+    font-family: "Jost", sans-serif;
+    text-align: left;
+    line-height: 1.7;
+    font-size: 16px;
+    color: #ffffff;
 }
