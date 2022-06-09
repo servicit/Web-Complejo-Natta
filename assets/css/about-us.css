@@ -1,13 +1,11 @@
-
 @font-face {
     font-family: LeBeauneNew;
     src: url("../fonts/LeBeauneNew.otf") format("opentype");
 }
 
 .about-us {
-    height: 80vh;
+    height: 75vh;
     width: 100%;
-
     position: relative;
 }
 
@@ -48,9 +46,10 @@
     align-content: flex-end;
 }
 
-.content-title{
+.content-title {
     z-index: 1;
     margin-bottom: 50px;
+    padding: 0;
 }
 
 .content-title h1 {
@@ -62,4 +61,40 @@
     color: #ffffff;
     z-index: 1;
     line-height: 1.2
+}
+
+.content-sub-title {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+}
+
+.content-sub-title p {
+    font-size: 25px;
+    font-family: "LeBeauneNew", serif;
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.content-info p {
+    font-size: 16px;
+    font-family: "Jost", sans-serif;
+    line-height: 1.7;
+    color: #6b6b6b;
+    margin: 0;
+}
+
+.content-logo {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.content-logo img {
+    width: 120px;
 }
