@@ -6,6 +6,11 @@ class ContactSection extends HTMLElement {
 # Contact-section
 --------------------------------------------------------------*/
 .contact {
+<<<<<<< HEAD
+=======
+    /*background: url("../img/infantil.jpg") left center no-repeat;*/
+    /*position: relative;*/
+>>>>>>> a83aa6777cd7b83084d7e479405e449beca1ef12
     padding-bottom: 70px;
 }
 

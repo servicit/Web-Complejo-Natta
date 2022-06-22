@@ -12,6 +12,7 @@ class FooterSection extends HTMLElement {
     position: relative;
     width: 100%;
     margin-top: 10px;
+
 }
 
 .footer::before {

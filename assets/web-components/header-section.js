@@ -2,7 +2,6 @@ class HeaderSection extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
 <style>
-
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/

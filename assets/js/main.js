@@ -68,6 +68,7 @@
     }
 
     const loadNews = () => {
+
         client.getEntries({
             content_type: 'post',
         }).then(function (entries) {
@@ -75,7 +76,6 @@
             const totalNews = entries.total;
             const pagesQuantity = Math.ceil(totalNews / limit);
 
-            pageButtons(pagesQuantity)
 
             client.getEntries({
                 content_type: 'post',
@@ -115,14 +115,18 @@
           </a>
          </div>`)
                 });
+
             })
+            pageButtons(pagesQuantity)
         })
     }
+
+
 
     loadNews()
 
     document.getElementById("down-pages").addEventListener("click", () => {
-        (--state.page)
+        (--state.page);
         loadNews()
     });
 
@@ -131,16 +135,18 @@
         loadNews()
     });
 
-    //Page buttons
+    //Load Page-buttons function
     function pageButtons(pagesQuantity) {
         const generateButtons = document.getElementById('generate-buttons-pagination')
         generateButtons.innerHTML = ''
-
+        if (state.page < 3) {
+            generateButtons.innerHTML += `<li class="current zpage-item"><button id="classes" data-display-button="classes" class="page page-link" value="${1}">1</button></li>`
+        }
         let maxLeft = state.page - Math.floor(state.window / 2);
         let maxRight = state.page + Math.floor(state.window / 2);
 
-        if (maxLeft < 1) {
-            maxLeft = 1;
+        if (maxLeft < 2) {
+            maxLeft = 2;
             maxRight = state.window
         }
 
@@ -148,13 +154,13 @@
             maxLeft = pagesQuantity - (state.window - 1)
             maxRight = pagesQuantity
 
-            if (maxLeft < 1) {
-                maxLeft = 1
+            if (maxLeft < 2) {
+                maxLeft = 2
             }
         }
 
         for (let pageI = maxLeft; pageI <= maxRight; pageI++) {
-            generateButtons.innerHTML += `<button value="${pageI}" class="page page-link" >${pageI}</button>`
+            generateButtons.innerHTML += `<li class="current page-item" value="${pageI}"><button class="page page-link" value="${pageI}">${pageI}</button></li>`
         }
 
         if (state.page === 1) {
@@ -172,11 +178,17 @@
 
         $('.page').on('click', function () {
             state.page = Number($(this).val())
-            loadNews()
         })
+
+        $('.pagination li.current').on('click', function () {
+            // loadNews()
+            $('.pagination li.current').removeClass('active')
+            $(this).addClass("active");
+        })
+
     }
 
-    // Smooth scroll for the navigation menu and links with .scrollto classes
+// Smooth scroll for the navigation menu and links with .scrollto classes
     var scrolltoOffset = $('#header').outerHeight() - 17;
     $(document).on('click', '.nav-menu a, .mobile-nav a, .scrollto', function (e) {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -209,7 +221,7 @@
         }
     });
 
-    // Activate smooth scroll on page load with hash links in the url
+// Activate smooth scroll on page load with hash links in the url
     $(document).ready(function () {
         if (window.location.hash) {
             var initial_nav = window.location.hash;
@@ -222,7 +234,7 @@
         }
     });
 
-    // Mobile Navigation
+// Mobile Navigation
     if ($('.nav-menu').length) {
         var $mobile_nav = $('.nav-menu').clone().prop({
             class: 'mobile-nav d-lg-none'
@@ -257,7 +269,7 @@
         $(".mobile-nav, .mobile-nav-toggle").hide();
     }
 
-    // Intro carousel
+// Intro carousel
     var heroCarousel = $("#heroCarousel");
     var heroCarouselIndicators = $("#hero-carousel-indicators");
     heroCarousel.find(".carousel-inner").children(".carousel-item").each(function (index) {
@@ -271,7 +283,7 @@
         $(this).find('p, .btn-get-started').addClass('animate__animated animate__fadeInUp');
     });
 
-    // Back to top button
+// Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('.back-to-top').fadeIn('slow');
@@ -287,7 +299,7 @@
         return false;
     });
 
-    // Porfolio isotope and filter
+// Porfolio isotope and filter
     $(window).on('load', function () {
         var portfolioIsotope = $('.portfolio-container').isotope({
             itemSelector: '.portfolio-item'
@@ -310,7 +322,7 @@
         });
     });
 
-    // Skills section
+// Skills section
     $('.skills-content').waypoint(function () {
         $('.progress .progress-bar').each(function () {
             $(this).css("width", $(this).attr("aria-valuenow") + '%');
@@ -319,7 +331,7 @@
         offset: '80%'
     });
 
-    // Portfolio details carousel
+// Portfolio details carousel
     $(".portfolio-details-carousel").owlCarousel({
         autoplay: true,
         dots: true,
@@ -327,13 +339,13 @@
         items: 1
     });
 
-    // jQuery counterUp
+// jQuery counterUp
     $('[data-toggle="counter-up"]').counterUp({
         delay: 10,
         time: 2000
     });
 
-    // Init AOS
+// Init AOS
     function aos_init() {
         AOS.init({
             duration: 1000,
@@ -347,4 +359,5 @@
     })
 
 
-})(jQuery);
+})
+(jQuery);
