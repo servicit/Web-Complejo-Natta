@@ -139,14 +139,12 @@
     function pageButtons(pagesQuantity) {
         const generateButtons = document.getElementById('generate-buttons-pagination')
         generateButtons.innerHTML = ''
-        if (state.page < 3) {
-            generateButtons.innerHTML += `<li class="current zpage-item"><button id="classes" data-display-button="classes" class="page page-link" value="${1}">1</button></li>`
-        }
+
         let maxLeft = state.page - Math.floor(state.window / 2);
         let maxRight = state.page + Math.floor(state.window / 2);
 
-        if (maxLeft < 2) {
-            maxLeft = 2;
+        if (maxLeft < 1) {
+            maxLeft = 1;
             maxRight = state.window
         }
 
@@ -154,13 +152,18 @@
             maxLeft = pagesQuantity - (state.window - 1)
             maxRight = pagesQuantity
 
-            if (maxLeft < 2) {
-                maxLeft = 2
+            if (maxLeft < 1) {
+                maxLeft = 1
             }
         }
 
         for (let pageI = maxLeft; pageI <= maxRight; pageI++) {
-            generateButtons.innerHTML += `<li class="current page-item" value="${pageI}"><button class="page page-link" value="${pageI}">${pageI}</button></li>`
+
+            let active = ""
+            if(state.page === pageI){
+                active = "active"
+            }
+            generateButtons.innerHTML += `<li  class="current page-item ${active}" value="${pageI}"><button class="page page-link" value="${pageI}">${pageI}</button></li>`
         }
 
         if (state.page === 1) {
@@ -181,9 +184,7 @@
         })
 
         $('.pagination li.current').on('click', function () {
-            // loadNews()
-            $('.pagination li.current').removeClass('active')
-            $(this).addClass("active");
+            loadNews()
         })
 
     }
