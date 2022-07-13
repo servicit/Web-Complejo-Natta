@@ -63,7 +63,7 @@
 
     let state = {
         page: 1,
-        limit: 2,
+        limit: 3,
         window: 3,
     }
 
@@ -120,8 +120,6 @@
             pageButtons(pagesQuantity)
         })
     }
-
-
 
     loadNews()
 
